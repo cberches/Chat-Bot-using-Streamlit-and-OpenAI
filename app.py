@@ -223,7 +223,7 @@ if prompt := st.chat_input("What is up?"):
     + "Are there different levels of access for clients within the ATS?	As of now, the details regarding different levels of access for clients within the ATS (Applicant Tracking System) of NXT are yet to be determined (TBD). The system is currently in the development or planning stage, and the specific roles and permissions for clients are under consideration. The access levels for clients will be carefully designed to align with the diverse needs and responsibilities of users within the recruitment process."
     + "Can a user be associated with multiple clients?	Just to keep things streamlined, each user is linked with a single client. It's like having your designated spot in the NXT family."
     + "How is client information managed and updated in the system?	Easy peasy! Clients hold the reins. They can effortlessly manage and update their information by heading to the company profile within the system. It's your company's space, after all!"
-    + "Make sure to analyze user question. If the user's question is not directly related to the given contxt, politely reject it.")
+    + "If the user's question is not directly related to the given contxt, politely reject it.")
 
 
     with st.chat_message("assistant"):
@@ -233,7 +233,7 @@ if prompt := st.chat_input("What is up?"):
             model=st.session_state["openai_model"],
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt + "Don’t give information not mentioned in the CONTEXT and SYSTEM PROMPT."}
+                {"role": "user", "content": prompt + "Dont justify and Don’t give information not mentioned in the CONTEXT and SYSTEM PROMPT."}
             ],
             stream=True,
         ):
