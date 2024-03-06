@@ -19,8 +19,8 @@ if prompt := st.chat_input("What is up?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
-    
-    system_prompt = str("question	Answer"
+
+    system_prompt = system_prompt = str("question	Answer"
     +"How do I post a job listing on this platform?	To post a job and connect with potential candidates:\n\n1. Set up your company profile if you haven't set it up.\n2. Navigate to â€˜Manage Jobâ€™.\n3. Click on â€˜Add Jobâ€™.\n4. Provide essential details:\n   - Name, Email, and Contact Number.\n   - Job Information: Title, Type, Arrangement, Hours, Address, City, Salary, Overview, Qualification, and Benefits.\n   - Job Requirements: Skill Set and Dialect.\n   - Posting Date: Start and End Date.\n5. Save as a Draft.\n6. When ready, click â€˜Publishâ€™ and confirm."
     +"How can I edit my client profile?	To edit your company profile:\n\n1. Log in with your email.\n2. Click 'Profile' > 'Company Profile.'\n3. Complete company details.\n4. Click 'Update Setting.'\n\nIf you need further assistance, feel free to ask!"
     + "Is there an option to schedule interviews or calls within the platform?	No, currently, our platform does not have the option to schedule interviews. If you have any other questions or need assistance, feel free to ask!"
@@ -225,15 +225,15 @@ if prompt := st.chat_input("What is up?"):
     + "How is client information managed and updated in the system?	Easy peasy! Clients hold the reins. They can effortlessly manage and update their information by heading to the company profile within the system. It's your company's space, after all!"
     )
 
+
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
             messages=[
-                {"role": "system", "content": system_prompt, 
-                    "role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
             ],
             stream=True,
         ):
