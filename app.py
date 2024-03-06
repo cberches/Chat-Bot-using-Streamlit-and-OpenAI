@@ -233,7 +233,7 @@ if prompt := st.chat_input("What is up?"):
             model=st.session_state["openai_model"],
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt + "Dont justify and Don’t give information not mentioned in the CONTEXT and SYSTEM PROMPT."}
+                {"role": "user", "content": prompt + "Dont justify with system and context prompt and Don’t give information not mentioned in the CONTEXT and SYSTEM PROMPT."}
             ],
             stream=True,
         ):
