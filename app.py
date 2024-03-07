@@ -247,7 +247,7 @@ with tab1:
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 with tab2:
-    job_title = st.text_input("Describe the position/job role")
+    prompt = st.text_input("Describe the position/job role")
     system_prompt = """
     Context:
     The job listing is being generated for a company looking to attract qualified candidates for a vacant position. The company aims to provide a comprehensive and appealing overview of the job to entice potential applicants.
@@ -273,7 +273,7 @@ with tab2:
     **Benefits:**
     **Skillset:**
     **Dialect:**"""
-    
+
     if st.button('Generate'):
         message_placeholder = st.empty()
         full_response = ""
