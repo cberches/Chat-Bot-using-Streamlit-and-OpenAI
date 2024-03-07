@@ -318,8 +318,9 @@ with tab3:
     Provide also in listed format
 
     """
-    prompt = st.text_input("Input Job Description")
-    prompt += st.text_input('Input Applicant info')
+    jd = st.text_input("Input Job Description")
+    app_info = st.text_input('Input Applicant info')
+    prompt = jd + " " + app_info
 
     if st.button('Generate'):
         message_placeholder = st.empty()
