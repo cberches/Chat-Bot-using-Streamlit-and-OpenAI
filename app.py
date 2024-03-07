@@ -323,7 +323,7 @@ with tab3:
     app_info = st.text_area('Input Applicant info')
     prompt = jd + " " + app_info
 
-    gen_ai_score = st.button('Analyze Applicant')
+    gen_ai_score = st.button('Analyze Applicant Score')
 
     if gen_ai_score:
         ai_score_placeholder = st.empty()
