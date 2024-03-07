@@ -1,7 +1,7 @@
 import openai
 import streamlit as st
 
-tab1, tab2 = st.tabs(["Chatbot", "JD Generator"])
+tab1, tab2, tab3 = st.tabs(["Chatbot", "JD Generator", "Job Matching"])
 
 with tab1:
 
@@ -273,6 +273,53 @@ with tab2:
     **Benefits:**
     **Skillset:**
     **Dialect:**"""
+
+    if st.button('Generate'):
+        message_placeholder = st.empty()
+        full_response = ""
+        for response in openai.ChatCompletion.create(
+            model=st.session_state["openai_model"],
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
+            ],
+            stream=True,
+        ):
+            full_response += response.choices[0].delta.get("content", "")
+            message_placeholder.markdown(full_response + "▌")
+        message_placeholder.markdown(full_response)
+
+with tab3:
+    system_prompt = """# CONTEXT # 
+    I am a machine learning engineer at a startup company in the staffing solutions industry. In this field, I create machine learning models which will help the company to achieve their goals. Now, I am focused on talent recruitment by helping them to develop AI models specifically for the Talent Recruitment platform as well as the application tracking system.
+
+    # OBJECTIVE #
+    Your task is to help me in scoring an applicant if they are match to the job they applied for. This involves getting the AI match scores with the average of three important factors work, skills, and education. The aim is to provide a score and breakdown with its analysis for helping talent recruiters in pre-screening.
+
+    # STYLE #
+    Write in a format which will be displayed in the pre-screening process. Ensure that the score is in percentage format, the AI score as the average of the Work, education, and skills, and the insight should be short but concise.
+
+    # Tone #
+    Maintain a formal tone in the insights. Make sure to retain the tone as an HR Expert.
+
+    # AUDIENCE #
+    The target audience is individuals who are the clients which are the HR recruiter or hiring managers looking for talents to improve their team.
+
+    # RESPONSE FORMAT #
+    Provide the AI Score and its breakdown on how much work, skills, and education impacted AI score in percentages and the insight or your analysis in short but concise manner. The AI score should be the average of the three breakdown criteria.
+
+    example:
+    AI Score: 96%
+    Drivers of matching:
+    - Work: 96%
+    - Skills: 96%
+    - Education: 96%
+
+    Provide also in listed format
+
+    """
+    prompt = st.text_input("Input Job Description")
+    prompt += st.text_input('Input Applicant info')
 
     if st.button('Generate'):
         message_placeholder = st.empty()
