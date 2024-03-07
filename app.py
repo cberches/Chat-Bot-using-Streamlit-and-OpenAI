@@ -322,7 +322,9 @@ with tab3:
     app_info = st.text_input('Input Applicant info')
     prompt = jd + " " + app_info
 
-    if st.button('Generate'):
+    gen_ai_score = st.button('Generate')
+
+    if gen_ai_score:
         message_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
