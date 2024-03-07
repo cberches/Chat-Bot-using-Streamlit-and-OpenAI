@@ -1,7 +1,7 @@
 import openai
 import streamlit as st
 
-tab1, tab2, tab3 = st.tabs(["Chatbot", "JD Generator", "Job Matching"])
+tab1, tab2, tab3, tab4 = st.tabs(["Chatbot", "JD Generator", "Job Matching", "AI Screening"])
 
 with tab1:
 
@@ -290,6 +290,7 @@ with tab2:
         message_placeholder.markdown(full_response)
 
 with tab3:
+
     system_prompt = """# CONTEXT # 
     I am a machine learning engineer at a startup company in the staffing solutions industry. In this field, I create machine learning models which will help the company to achieve their goals. Now, I am focused on talent recruitment by helping them to develop AI models specifically for the Talent Recruitment platform as well as the application tracking system.
 
@@ -318,8 +319,8 @@ with tab3:
     Provide also in listed format
 
     """
-    jd = st.text_input("Input Job Description")
-    app_info = st.text_input('Input Applicant info')
+    jd = st.text_area("Input Job Description")
+    app_info = st.text_area('Input Applicant info')
     prompt = jd + " " + app_info
 
     gen_ai_score = st.button('Analyze Applicant')
@@ -338,3 +339,73 @@ with tab3:
             full_response += response.choices[0].delta.get("content", "")
             ai_score_placeholder.markdown(full_response + "▌")
         ai_score_placeholder.markdown(full_response)
+
+with tab4:
+    system_prompt = """# CONTEXT # 
+        I am a machine learning engineer at a startup company in the staffing solutions industry. In this field, I create machine learning models which will help the company to achieve their goals. Now, I am focused on talent recruitment by helping them to develop AI models specifically for the Talent Recruitment platform as well as the application tracking system.
+
+        # OBJECTIVE #
+        Your task is to help me in scoring an applicant assessment answer. This involves processing the question and sample or suggested answer by HR or client, Applicant answer, creating a scoring for each question (20 out of 20 scoring), and your analysis and insight.
+
+        # STYLE #
+        Write in a format which will be displayed in the pre-screening process. Ensure that each question does not show the sample or suggested answer by HR or client, but include the applicant answer, the score, and your insight or analysis.
+
+        # Tone #
+        Maintain a formal tone in the insights. Make sure to retain the tone as an HR Expert.
+
+        # AUDIENCE #
+        The target audience is individuals who are the clients which are the HR recruiter or hiring managers looking for talents to improve their team.
+
+        # RESPONSE FORMAT #
+        Provide first the question, then each question will show the applicant answer, your scoring (20 out of 20), and your analysis or insight.
+
+        Example:
+        Assessment Analysis:
+
+        1. [ Insert Question]:
+        - Applicant Answer:
+        - AI Score: 17 out of 20
+        - Insights: 
+
+        2. [ Insert Question]:
+        - Applicant Answer:
+        - AI Score: 17 out of 20
+        - Insights: 
+
+        3. [ Insert Question]:
+        - Applicant Answer:
+        - AI Score: 17 out of 20
+        - Insights: 
+
+        4. [ Insert Question]:
+        - Applicant Answer:
+        - AI Score: 17 out of 20
+        - Insights: 
+
+        5. [ Insert Question]:
+        - Applicant Answer:
+        - AI Score: 17 out of 20
+        - Insights: 
+
+        Sum of AI Scores: 85/100
+        Average AI Score: 17
+        Overall Insight:  
+
+    """
+    prompt = st.text_area("Input question and applicant answer")
+    gen_ai_screening = st.button('Analyze Applicant')
+
+    if gen_ai_screening:
+        ai_screening_placeholder = st.empty()
+        full_response = ""
+        for response in openai.ChatCompletion.create(
+            model=st.session_state["openai_model"],
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
+            ],
+            stream=True,
+        ):
+            full_response += response.choices[0].delta.get("content", "")
+            ai_screening_placeholder.markdown(full_response + "▌")
+        ai_screening_placeholder.markdown(full_response)
