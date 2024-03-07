@@ -322,10 +322,10 @@ with tab3:
     app_info = st.text_input('Input Applicant info')
     prompt = jd + " " + app_info
 
-    gen_ai_score = st.button('Generate')
+    gen_ai_score = st.button('Analyze Applicant')
 
     if gen_ai_score:
-        message_placeholder = st.empty()
+        ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
@@ -336,5 +336,5 @@ with tab3:
             stream=True,
         ):
             full_response += response.choices[0].delta.get("content", "")
-            message_placeholder.markdown(full_response + "▌")
-        message_placeholder.markdown(full_response)
+            ai_score_placeholder.markdown(full_response + "▌")
+        ai_score_placeholder.markdown(full_response)
