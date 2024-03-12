@@ -318,6 +318,9 @@ with tab3:
     Provide also in listed format
 
     """
+    jd = st.empty()
+    app_info = st.empty()
+
     jd = st.text_area("Input Job Description")
     app_info = st.text_area('Input Applicant info')
     prompt = jd + " " + app_info
