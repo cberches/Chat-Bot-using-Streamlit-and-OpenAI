@@ -375,6 +375,7 @@ with tab3:
         else:
             st.session_state['prompt'] = str(jd) + " " + str(app_info)
 
+        print(st.session_state['prompt'])
         ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
@@ -386,7 +387,7 @@ with tab3:
             stream=True,
         ):
             full_response += response.choices[0].delta.get("content", "")
-            ai_score_placeholder.markdown(full_response + "▌")
+            ai_score_placeholder.markdown(full_response)
         ai_score_placeholder.markdown(full_response)
 
 with tab4:
