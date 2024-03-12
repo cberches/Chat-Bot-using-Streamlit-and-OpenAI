@@ -324,7 +324,7 @@ with tab3:
     jd_in = jd.text_area("Input Job Description")
     app_info_in = app_info.text_area('Input Applicant info')
 
-    jd_gen_btn = st.radio("Create sample info", ['Yes', 'No'])
+    jd_gen_btn = st.radio("Use Job Matching Sample Info", ['Yes', 'No'])
 
     job_info = f"""
     Position: AI/ML Engineer
@@ -472,7 +472,7 @@ with tab4:
     gen_screening_text_area = st.empty()
     gen_screening_text_area.text_area("Input question and applicant answer")
 
-    screening_rb = st.radio("Create sample info", ['Yes', 'No'])
+    screening_rb = st.radio("Use Screening Sample Info", ['Yes', 'No'])
 
     gen_ai_screening = st.button('Analyze Applicant')
 
