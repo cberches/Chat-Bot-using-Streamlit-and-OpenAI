@@ -289,7 +289,7 @@ with tab2:
         message_placeholder.markdown(full_response)
 
 with tab3:
-
+    
     system_prompt = """# CONTEXT # 
     I am a machine learning engineer at a startup company in the staffing solutions industry. In this field, I create machine learning models which will help the company to achieve their goals. Now, I am focused on talent recruitment by helping them to develop AI models specifically for the Talent Recruitment platform as well as the application tracking system.
 
@@ -321,6 +321,52 @@ with tab3:
     jd = st.text_area("Input Job Description")
     app_info = st.text_area('Input Applicant info')
     prompt = jd + " " + app_info
+
+    jd_gen_btn = st.button("Create sample info")
+
+    if jd_gen_btn:
+        job_info = f"""
+        Position: AI/ML Engineer
+        Location: Taguig
+        Job Description:
+        "Develop and implement machine learning algorithms and models to address business challenges, such as predictive analytics, natural language processing, computer vision, recommendation systems, or anomaly detection.
+        Collaborate with data scientists and domain experts to understand business requirements and translate them into technical specifications.
+        Preprocess and analyze large datasets to extract relevant features and insights, ensuring data quality and integrity throughout the process.
+        Design, train, and evaluate machine learning models using state-of-the-art techniques and frameworks.
+        Optimize and fine-tune models for performance, accuracy, and scalability.
+        Deploy models into production environments and monitor their performance and effectiveness over time.
+        Collaborate with software engineers to integrate AI/ML solutions into existing systems or develop new applications.
+        Stay up-to-date with the latest advancements in AI/ML research and technologies, and actively contribute to the organization's knowledge base.
+        Conduct experiments, run A/B tests, and provide data-driven insights to support decision-making processes.
+        Document and communicate methodologies, results, and findings effectively to both technical and non-technical stakeholders."
+
+        Job Requirements:
+        "Bachelor's degree in computer science, data science, or a related field
+        Solid understanding of machine learning algorithms, statistical models, and data structures.
+        Proficiency in programming languages such as Python, R, or Java, and experience with ML libraries and frameworks (e.g., TensorFlow, PyTorch, scikit-learn).
+        Knowledgeable in MongoDb and DynamoDb.
+        Hands-on experience with data preprocessing, feature engineering, and exploratory data analysis.
+        Demonstrated experience in developing and deploying machine learning models in production environments.
+        Strong analytical and problem-solving skills, with the ability to think critically and creatively to tackle complex challenges.
+        Excellent communication and collaboration skills, with the ability to explain technical concepts to both technical and non-technical stakeholders.
+        Experience with cloud platforms (e.g., AWS, Azure, Google Cloud) and knowledge of distributed computing frameworks (e.g., Apache Spark) is a plus.
+        Familiarity with software development best practices, version control systems, and agile methodologies.
+        A strong passion for staying up-to-date with the latest AI/ML trends, research papers, and technologies.
+        Should have a good understanding and foundational knowledge of NodeJS, ReactJs, and/or AngularJS"
+
+        Open to work in BGC on a hybrid arrangement
+        Job Type: Full-time
+        Salary: Php40,000.00 - Php60,000.00 per month
+        Benefits: Health insurance
+        Schedule: 8-hour shift
+        Supplemental pay types: 13th month salary
+        """
+
+        info_string = "- Gender: Male\n- Age: 22\n- Location: Taytay, Rizal\n- Work History: Data Science Intern for the past 7 months\n- Skills: data science, machine learning, pandas, python, streamlit, numpy, seaborn, matplotlib, scikit-learn, shap, scipy.\n- Education: Bachelor of Science in Information Technology, 2019-2023, Magna Cum Laude"
+
+        jd = st.text_area("Input Job Description", value=job_info)
+        app_info = st.text_area('Input Applicant info', value=info_string)
+
 
     gen_ai_score = st.button('Analyze Applicant Score')
 
