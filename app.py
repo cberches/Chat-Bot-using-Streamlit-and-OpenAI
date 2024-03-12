@@ -363,7 +363,7 @@ with tab3:
     Supplemental pay types: 13th month salary
     """
 
-    info_string = "- Gender: Male\n- Age: 22\n- Location: Taytay, Rizal\n- Work History: Data Science Intern for the past 7 months\n- Skills: data science, machine learning, pandas, python, streamlit, numpy, seaborn, matplotlib, scikit-learn, shap, scipy.\n- Education: Bachelor of Science in Information Technology, 2019-2023, Magna Cum Laude"
+    info_string = "- Gender: Female\n- Age: 21\n- Location: San Mateo, Rizal\n- Work History: Data Science Intern for the past 3 months\n- Skills: data science, machine learning, pandas, python, streamlit, numpy, seaborn, matplotlib, scikit-learn, shap, scipy.\n- Education: Bachelor of Science in Computer Science"
 
     gen_ai_score = st.button('Analyze Applicant Score')
 
