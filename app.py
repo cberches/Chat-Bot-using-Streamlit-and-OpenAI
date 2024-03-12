@@ -323,7 +323,7 @@ with tab3:
 
     jd.text_area("Input Job Description")
     app_info.text_area('Input Applicant info')
-    prompt = jd + " " + app_info
+    prompt = str(jd) + " " + str(app_info)
 
     jd_gen_btn = st.button("Create sample info")
 
