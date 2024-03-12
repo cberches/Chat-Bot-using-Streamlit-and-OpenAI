@@ -370,11 +370,13 @@ with tab3:
         jd.text_area("Input Job Description", value=job_info)
         app_info.text_area('Input Applicant info', value=info_string)
         prompt = str(jd) + " " + str(app_info)
+        print(prompt)
 
 
     gen_ai_score = st.button('Analyze Applicant Score')
 
     if gen_ai_score:
+        print(prompt)
         ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
