@@ -318,11 +318,8 @@ with tab3:
     Provide also in listed format
 
     """
-    jd = st.empty()
-    app_info = st.empty()
-
-    jd.text_area("Input Job Description")
-    app_info.text_area('Input Applicant info')
+    jd = st.text_area("Input Job Description")
+    app_info = st.text_area('Input Applicant info')
 
     jd_gen_btn = st.radio("Create sample info", ['Yes', 'No'])
 
@@ -372,13 +369,12 @@ with tab3:
         if jd_gen_btn=='Yes':
             st.write(jd_gen_btn)
 
-            jd.text_area("Input Job Description", value=job_info)
-            app_info.text_area('Input Applicant info', value=info_string)
-            prompt= str(jd) + " " + str(app_info)
+            jd_in = job_info
+            app_info_in = info_string
+            prompt= str(jd_in) + " " + str(app_info_in)
         else:
             prompt = str(jd) + " " + str(app_info)
 
-        st.write(prompt)
         ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
