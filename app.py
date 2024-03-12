@@ -6,7 +6,6 @@ tab1, tab2, tab3, tab4 = st.tabs(["Chatbot", "JD Generator", "Job Matching", "AI
 with tab1:
 
     st.title("NXT Chatbot")
-
     openai.api_key = st.secrets['OPENAI_API_KEY']
 
     if "openai_model" not in st.session_state:
