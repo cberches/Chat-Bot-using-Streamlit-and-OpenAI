@@ -368,21 +368,22 @@ with tab3:
     gen_ai_score = st.button('Analyze Applicant Score')
 
     if gen_ai_score:
+        prompt = ""
         if jd_gen_btn=='Yes':
             jd.text_area("Input Job Description", value=job_info)
             app_info.text_area('Input Applicant info', value=info_string)
-            st.session_state['prompt'] = str(jd) + " " + str(app_info)
+            prompt= str(jd) + " " + str(app_info)
         else:
-            st.session_state['prompt'] = str(jd) + " " + str(app_info)
+            prompt = str(jd) + " " + str(app_info)
 
-        print(st.session_state['prompt'])
+        print(prompt)
         ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": st.session_state['prompt']}
+                {"role": "user", "content": prompt}
             ],
             stream=True,
         ):
