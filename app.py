@@ -321,9 +321,8 @@ with tab3:
     jd = st.empty()
     app_info = st.empty()
 
-    if jd == st.empty():
-        jd = st.text_area("Input Job Description")
-        app_info = st.text_area('Input Applicant info')
+    jd.text_area("Input Job Description")
+    app_info.text_area('Input Applicant info')
     prompt = jd + " " + app_info
 
     jd_gen_btn = st.button("Create sample info")
@@ -368,8 +367,8 @@ with tab3:
 
         info_string = "- Gender: Male\n- Age: 22\n- Location: Taytay, Rizal\n- Work History: Data Science Intern for the past 7 months\n- Skills: data science, machine learning, pandas, python, streamlit, numpy, seaborn, matplotlib, scikit-learn, shap, scipy.\n- Education: Bachelor of Science in Information Technology, 2019-2023, Magna Cum Laude"
 
-        jd = st.text_area("Input Job Description", value=job_info)
-        app_info = st.text_area('Input Applicant info', value=info_string)
+        jd.text_area("Input Job Description", value=job_info)
+        app_info.text_area('Input Applicant info', value=info_string)
 
 
     gen_ai_score = st.button('Analyze Applicant Score')
