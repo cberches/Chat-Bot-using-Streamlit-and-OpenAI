@@ -323,7 +323,7 @@ with tab3:
 
     jd.text_area("Input Job Description")
     app_info.text_area('Input Applicant info')
-    prompt = str(jd) + " " + str(app_info)
+    st.session_state['prompt'] = str(jd) + " " + str(app_info)
 
     jd_gen_btn = st.button("Create sample info")
 
@@ -369,9 +369,7 @@ with tab3:
 
         jd.text_area("Input Job Description", value=job_info)
         app_info.text_area('Input Applicant info', value=info_string)
-        prompt = str(jd) + " " + str(app_info)
-        print(prompt)
-
+        st.session_state['prompt'] = str(jd) + " " + str(app_info)
 
     gen_ai_score = st.button('Analyze Applicant Score')
 
@@ -383,7 +381,7 @@ with tab3:
             model=st.session_state["openai_model"],
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt}
+                {"role": "user", "content": st.session_state['prompt']}
             ],
             stream=True,
         ):
