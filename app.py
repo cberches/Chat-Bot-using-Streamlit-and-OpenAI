@@ -321,8 +321,8 @@ with tab3:
     jd = st.empty()
     app_info = st.empty()
 
-    jd.text_area("Input Job Description")
-    app_info.text_area('Input Applicant info')
+    jd_in = jd.text_area("Input Job Description")
+    app_info_in = app_info.text_area('Input Applicant info')
 
     jd_gen_btn = st.radio("Create sample info", ['Yes', 'No'])
 
@@ -378,7 +378,7 @@ with tab3:
             prompt= str(jd_in) + " " + str(app_info_in)
 
         else:
-            prompt = str(jd.value) + " " + str(app_info.value)
+            prompt= str(jd_in) + " " + str(app_info_in)
         st.write(prompt)
         ai_score_placeholder = st.empty()
         full_response = ""
