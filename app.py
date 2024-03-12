@@ -374,7 +374,7 @@ with tab3:
     gen_ai_score = st.button('Analyze Applicant Score')
 
     if gen_ai_score:
-        print(prompt)
+        print(st.session_state['prompt'])
         ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
