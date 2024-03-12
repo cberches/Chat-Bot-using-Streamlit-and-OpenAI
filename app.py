@@ -374,13 +374,15 @@ with tab3:
     gen_ai_score = st.button('Analyze Applicant Score')
 
     if gen_ai_score:
+        prompt_final = prompt
+        st.write(prompt_final)
         ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt}
+                {"role": "user", "content": prompt_final}
             ],
             stream=True,
         ):
