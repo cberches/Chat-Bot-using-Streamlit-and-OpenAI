@@ -370,6 +370,7 @@ with tab3:
         jd.text_area("Input Job Description", value=job_info)
         app_info.text_area('Input Applicant info', value=info_string)
         st.session_state['prompt'] = str(jd) + " " + str(app_info)
+        print(st.session_state['prompt'])
 
     gen_ai_score = st.button('Analyze Applicant Score')
 
