@@ -321,8 +321,9 @@ with tab3:
     jd = st.empty()
     app_info = st.empty()
 
-    jd = st.text_area("Input Job Description")
-    app_info = st.text_area('Input Applicant info')
+    if jd == st.empty():
+        jd = st.text_area("Input Job Description")
+        app_info = st.text_area('Input Applicant info')
     prompt = jd + " " + app_info
 
     jd_gen_btn = st.button("Create sample info")
