@@ -379,7 +379,7 @@ with tab3:
 
         else:
             prompt= str(jd_in) + " " + str(app_info_in)
-        st.write(prompt)
+
         ai_score_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
