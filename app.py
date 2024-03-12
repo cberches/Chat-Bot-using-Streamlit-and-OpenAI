@@ -369,8 +369,9 @@ with tab3:
 
     if gen_ai_score:
         prompt = ""
-        st.write(jd_gen_btn)
         if jd_gen_btn=='Yes':
+            st.write(jd_gen_btn)
+
             jd.text_area("Input Job Description", value=job_info)
             app_info.text_area('Input Applicant info', value=info_string)
             prompt= str(jd) + " " + str(app_info)
