@@ -378,7 +378,7 @@ with tab3:
             prompt= str(jd_in) + " " + str(app_info_in)
 
         else:
-            prompt = str(jd) + " " + str(app_info)
+            prompt = str(jd.value) + " " + str(app_info.value)
 
         ai_score_placeholder = st.empty()
         full_response = ""
