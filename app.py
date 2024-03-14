@@ -237,11 +237,12 @@ with tab1:
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt + "Dont justify with system and context prompt and Don’t give information not mentioned in the CONTEXT and SYSTEM PROMPT."}
+                    for m in st.session_state.messages
                 ],
                 stream=True,
             ):
                 full_response += response.choices[0].delta.get("content", "")
-                message_placeholder.markdown(full_response)
+                message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 
