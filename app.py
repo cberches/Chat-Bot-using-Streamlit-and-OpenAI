@@ -235,8 +235,7 @@ with tab1:
             for response in openai.ChatCompletion.create(
                 model=st.session_state["openai_model"],
                 messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt + "Dont justify with system and context prompt and Don’t give information not mentioned in the CONTEXT and SYSTEM PROMPT."}
+                    {"role": m["role"], "content": m["content"]}
                     for m in st.session_state.messages
                 ],
                 stream=True,
