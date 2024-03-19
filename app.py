@@ -3,9 +3,9 @@ import streamlit as st
 
 tab1, tab2, tab3, tab4 = st.tabs(["Chatbot", "JD Generator", "Job Matching", "AI Screening"])
 
-st.write("Currently Not Working")
 
 with tab1:
+    st.write("Currently Not Working")
 
     st.title("NXT Chatbot")
     openai.api_key = st.secrets['OPENAI_API_KEY']
