@@ -3,6 +3,8 @@ import streamlit as st
 
 tab1, tab2, tab3, tab4 = st.tabs(["Chatbot", "JD Generator", "Job Matching", "AI Screening"])
 
+st.write("Currently Not Working")
+
 with tab1:
 
     st.title("NXT Chatbot")
