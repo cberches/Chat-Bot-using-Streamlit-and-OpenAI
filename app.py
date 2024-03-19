@@ -19,10 +19,6 @@ with tab1:
             st.markdown(message["content"])
     
     if prompt := st.chat_input("What is up?"):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-
         system_prompt = system_prompt = str("Context: question	Answer"
         +"How do I post a job listing on this platform?	To post a job and connect with potential candidates:\n\n1. Set up your company profile if you haven't set it up.\n2. Navigate to â€˜Manage Jobâ€™.\n3. Click on â€˜Add Jobâ€™.\n4. Provide essential details:\n   - Name, Email, and Contact Number.\n   - Job Information: Title, Type, Arrangement, Hours, Address, City, Salary, Overview, Qualification, and Benefits.\n   - Job Requirements: Skill Set and Dialect.\n   - Posting Date: Start and End Date.\n5. Save as a Draft.\n6. When ready, click â€˜Publishâ€™ and confirm."
         +"How can I edit my client profile?	To edit your company profile:\n\n1. Log in with your email.\n2. Click 'Profile' > 'Company Profile.'\n3. Complete company details.\n4. Click 'Update Setting.'\n\nIf you need further assistance, feel free to ask!"
@@ -227,6 +223,10 @@ with tab1:
         + "Can a user be associated with multiple clients?	Just to keep things streamlined, each user is linked with a single client. It's like having your designated spot in the NXT family."
         + "How is client information managed and updated in the system?	Easy peasy! Clients hold the reins. They can effortlessly manage and update their information by heading to the company profile within the system. It's your company's space, after all!"
         + "If the user's question is not directly related to the given contxt, politely reject it.")
+        
+        st.session_state.messages.append({"role": "system", "content": system_prompt}, {"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
 
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
@@ -234,8 +234,8 @@ with tab1:
             for response in openai.ChatCompletion.create(
                 model=st.session_state["openai_model"],
                 messages=[
-                    {"role": "system", "content": system_prompt},
                     {"role": m["role"], "content": m["content"] + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
+                    for m in st.session_state.messages
                 ],
                 stream=True,
             ):
