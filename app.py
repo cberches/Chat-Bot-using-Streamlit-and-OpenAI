@@ -225,11 +225,7 @@ with tab1:
         + "Can a user be associated with multiple clients?	Just to keep things streamlined, each user is linked with a single client. It's like having your designated spot in the NXT family."
         + "How is client information managed and updated in the system?	Easy peasy! Clients hold the reins. They can effortlessly manage and update their information by heading to the company profile within the system. It's your company's space, after all!"
         + "If the user's question is not directly related to the given contxt, politely reject it.")
-       
-        if len(st.session_state.messages) == 0:
-            st.session_state.messages.append({"role": "system", "content": system_prompt})
-        st.session_state.messages.append({"role": "user", "content": prompt})
-       
+    
         with st.chat_message("user"):
             st.markdown(prompt)
 
@@ -239,8 +235,8 @@ with tab1:
             for response in openai.ChatCompletion.create(
                 model=st.session_state["openai_model"],
                 messages=[
-                    {"role": m["role"], "content": m["content"] + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
-                    for m in st.session_state.messages
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": "prompt" + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
                 ],
                 stream=True,
             ):
