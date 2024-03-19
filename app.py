@@ -234,7 +234,7 @@ with tab1:
             for response in openai.ChatCompletion.create(
                 model=st.session_state["openai_model"],
                 messages=[
-                    {"role": m["role"], "content": m["content"]}
+                    {"role": m["role"], "content": m["content"] + ". Limit you answer to the given context or system prompt."}
                     for m in st.session_state.messages
                 ],
                 stream=True,
