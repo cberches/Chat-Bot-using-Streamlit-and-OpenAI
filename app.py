@@ -231,13 +231,15 @@ with tab1:
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
             full_response = ""
+            # Constructing messages list properly
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": m["role"], "content": m["content"] + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
+                for m in st.session_state.messages
+            ]
             for response in openai.ChatCompletion.create(
                 model=st.session_state["openai_model"],
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": m["role"], "content": m["content"] + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
-                    for m in st.session_state.messages
-                ],
+                messages=messages,  # Use the constructed messages list here
                 stream=True,
             ):
                 full_response += response.choices[0].delta.get("content", "")
