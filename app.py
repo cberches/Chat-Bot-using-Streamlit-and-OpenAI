@@ -236,7 +236,6 @@ with tab1:
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": m["role"], "content": m["content"] + ". Don’t give information not mentioned in the CONTEXT INFORMATION."},
-                    for m in st.session_state.messages
                 ],
                 stream=True,
             ):
