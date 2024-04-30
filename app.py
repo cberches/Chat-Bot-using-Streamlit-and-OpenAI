@@ -8,11 +8,8 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbotv1", "Chatbotv2","JD Generator",
 
 openai.api_key = st.secrets['OPENAI_API_KEY']
 
-with tab1:
-    st.write("Currently Not Working")
-
+with tab2:
     st.title("NXT Chatbot")
-    
 
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -500,7 +497,7 @@ with tab5:
             ai_screening_placeholder.markdown(full_response + "▌")
         ai_screening_placeholder.markdown(full_response)
 
-with tab2:
+with tab1:
     st.header("Chat with the Streamlit docs 💬 📚")
 
     if "messages" not in st.session_state.keys(): # Initialize the chat message history
@@ -514,7 +511,9 @@ with tab2:
         with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
             reader = SimpleDirectoryReader(input_dir="./kb", recursive=True)
             docs = reader.load_data()
-            service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="You are a chat assistant for NXT. Keep your answers technical and based on facts – do not hallucinate features. . Don’t give information not mentioned in the CONTEXT INFORMATION."))
+            service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", 
+                                                                      temperature=0.5, 
+                                                                      system_prompt="You are a chat assistant for NXT. Keep your answers technical and based on facts – do not hallucinate features. . Don’t give information not mentioned in the CONTEXT INFORMATION."))
             index = VectorStoreIndex.from_documents(docs, service_context=service_context)
             return index
 
