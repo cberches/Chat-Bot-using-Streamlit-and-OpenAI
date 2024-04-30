@@ -4,7 +4,7 @@ from llama_index import VectorStoreIndex, ServiceContext, Document
 from llama_index.llms import OpenAI
 from llama_index import SimpleDirectoryReader
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbotv1", "Chatbotv2","JD Generator", "Job Matching", "AI Screening"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbotv2 (with indexing)", "Chatbotv1","JD Generator", "Job Matching", "AI Screening"])
 
 openai.api_key = st.secrets['OPENAI_API_KEY']
 
