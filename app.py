@@ -1,7 +1,8 @@
 import openai
 import streamlit as st
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, ServiceContext, Document
-from llama_index.llms.openai import OpenAI
+from llama_index import VectorStoreIndex, ServiceContext, Document
+from llama_index.llms import OpenAI
+from llama_index import SimpleDirectoryReader
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbotv1", "Chatbotv2","JD Generator", "Job Matching", "AI Screening"])
 
