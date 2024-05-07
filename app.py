@@ -21,7 +21,8 @@ with tab1:
     isV2 = st.toggle("Use v2 with index")
     if isV2: 
         try:
-            st.header("Chat with the Streamlit docs 💬 📚")
+            st.header("Chatbot v2")
+            st.subheader("Using Llama Indexing for document file-based knowledge base")
 
             if "messages" not in st.session_state.keys(): # Initialize the chat message history
                 st.session_state.messages = [
@@ -60,6 +61,8 @@ with tab1:
         except: 
             st.write('Try Refreshing the page. This error is caused by OpenAI\'s limit for free trial')
     else: 
+        st.header("Chatbot v1")
+        st.subheader("Using system prompt as knowledge base")
         try:
             if "openai_model" not in st.session_state:
                 st.session_state["openai_model"] = "gpt-3.5-turbo"
