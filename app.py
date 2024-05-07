@@ -579,4 +579,67 @@ with tab6:
             elif path.endswith('.pdf'):
                 text = convert_pdf_to_markdown(path)
 
-            st.text(text)
+            resume_prompt = '''
+                    The following is a resume format for a candidate named {{name}}, born on {{birthDate}}.
+
+                    content: {
+                        name: "{{name}}",
+                        birthDate: "{{birthDate}}",
+                        description: "null",
+
+                        studentInfo: [
+                        {
+                            educationalBackground: "{{educationalBackground}}",
+                            course: "{{course}}",
+                            school: "{{school}}",
+                            schoolYear: "{{schoolYear}}",
+                        },
+                        ],
+                        skillSet: [
+                        {
+                            skill: "{{skill}}",
+                            level: "{{level}}",
+                            experience: "{{experience}}",
+                        },
+                        ],
+                        workHistory: [
+                        {
+                            companyName: "{{companyName}}",
+                            employmentType: "{{employmentType}}",
+                            experienceDate: {
+                            startDate: "{{startDate}}",
+                            endDate: "{{endDate}}",
+                            },
+                            industry: "{{industry}}",
+                            isPresent: {{isPresent}},
+                            jobLevel: "{{jobLevel}}",
+                            jobRole:
+                            "{{jobRole}}",
+                            workSetup: "{{workSetup}}",
+                        },
+                        ],
+                        certificates: [
+                        {
+                            title: "{{certificateTitle}}",
+                            organization: "{{certificateOrganization}}",
+                            dateIssued: "{{certificateDateIssued}}",
+                        },
+                        ],
+                    },
+                    };
+                    '''
+
+
+            json_format = st.empty()
+            full_response = ""
+            for response in openai.ChatCompletion.create(
+                model=st.session_state["openai_model"],
+                messages=[
+                    {"role": "system", "content": resume_prompt},
+                    {"role": "user", "content": text}
+                ],
+                stream=True,
+            ):
+                full_response += response.choices[0].delta.get("content", "")
+                json_format.markdown(full_response)
+            json_format.markdown(full_response)
