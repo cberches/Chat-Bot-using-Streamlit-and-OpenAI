@@ -8,6 +8,9 @@ import PyPDF2
 import markdown
 import tempfile
 import os
+from PIL import Image
+import numpy as np
+import easyocr
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbot","JD Generator", "Job Matching", "AI Screening", "CV Parsing"])
 
@@ -564,6 +567,14 @@ with tab5:
                 text += page.extract_text()
                 markdown_text = markdown.markdown(text)
         return markdown_text
+    
+    def display_text(bounds):
+        text = []
+        for x in bounds:
+            t = x[1]
+            text.append(t)
+        text = ' '.join(text)
+        return text 
 
     input_file = st.file_uploader(label='Resume', type=['pdf', 'docx', 'jpg', 'jpeg', 'png']) 
     if st.button("Parse"):
@@ -580,6 +591,14 @@ with tab5:
                 text = convert_docx_to_markdown(path)
             elif path.endswith('.pdf'):
                 text = convert_pdf_to_markdown(path)
+            else:
+                img = Image.open(path)
+                img = np.array(img)
+                
+                with st.spinner('Extracting Text from given Image'):
+                    eng_reader = easyocr.Reader(['en'])
+                    detected_text = eng_reader.readtext(img)
+                text = display_text(detected_text)
 
             resume_prompt = '''
                     The following is a resume format for a candidate named {{name}}, born on {{birthDate}}.
