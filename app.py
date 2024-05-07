@@ -565,11 +565,9 @@ with tab5:
                 markdown_text = markdown.markdown(text)
         return markdown_text
 
-    input_file = st.file_uploader(label='Resume') # Replace with the path to your Word document or PDF file
-
+    input_file = st.file_uploader(label='Resume', type=['pdf', 'docx', 'jpg', 'jpeg', 'png']) 
     if st.button("Parse"):
         
-
         if input_file:
             temp_dir = tempfile.mkdtemp()
             path = os.path.join(temp_dir, input_file.name)
