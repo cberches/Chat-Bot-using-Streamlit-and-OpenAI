@@ -9,7 +9,7 @@ import markdown
 import tempfile
 import os
 
-tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(["Chatbot","JD Generator", "Job Matching", "AI Screening", "CV Parsing"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbot","JD Generator", "Job Matching", "AI Screening", "CV Parsing"])
 
 openai.api_key = st.secrets['OPENAI_API_KEY']
 
@@ -295,7 +295,7 @@ with tab1:
         except: 
             st.subheader('Refresh Page')
 
-with tab3:
+with tab2:
     prompt = st.text_input("Describe the position/job role")
     system_prompt = """
     Context:
@@ -338,7 +338,7 @@ with tab3:
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
 
-with tab4:
+with tab3:
     
     system_prompt = """# CONTEXT # 
     I am a machine learning engineer at a startup company in the staffing solutions industry. In this field, I create machine learning models which will help the company to achieve their goals. Now, I am focused on talent recruitment by helping them to develop AI models specifically for the Talent Recruitment platform as well as the application tracking system.
@@ -444,7 +444,7 @@ with tab4:
             ai_score_placeholder.markdown(full_response)
         ai_score_placeholder.markdown(full_response)
 
-with tab5:
+with tab4:
     system_prompt = """# CONTEXT # 
         I am a machine learning engineer at a startup company in the staffing solutions industry. In this field, I create machine learning models which will help the company to achieve their goals. Now, I am focused on talent recruitment by helping them to develop AI models specifically for the Talent Recruitment platform as well as the application tracking system.
 
@@ -546,7 +546,7 @@ with tab5:
             ai_screening_placeholder.markdown(full_response + "▌")
         ai_screening_placeholder.markdown(full_response)
 
-with tab6:
+with tab5:
     st.title("CV Parsing")
     st.subheader("with PDF and Docx")
 
