@@ -556,9 +556,9 @@ with tab6:
         with open(input_file, 'rb') as f:
             pdf_reader = PyPDF2.PdfReader(f)
             text = ''
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-            markdown_text = markdown.markdown(text)
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+                markdown_text = markdown.markdown(text)
         return markdown_text
 
     input_file = st.file_uploader(label='Resume') # Replace with the path to your Word document or PDF file
@@ -573,7 +573,7 @@ with tab6:
                     f.write(input_file.getvalue())
 
             st.write(path)
-
+            text = None
             if path.endswith('.docx'):
                 text = convert_docx_to_markdown(path)
             elif path.endswith('.pdf'):
