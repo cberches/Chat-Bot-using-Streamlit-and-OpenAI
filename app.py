@@ -6,6 +6,8 @@ from llama_index import SimpleDirectoryReader
 import docx
 import PyPDF2
 import markdown
+import tempfile
+import os
 
 tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(["Chatbotv2 (with indexing)", "Chatbotv1","JD Generator", "Job Matching", "AI Screening", "CV Parsing"])
 
@@ -562,9 +564,19 @@ with tab6:
     input_file = st.file_uploader(label='Resume') # Replace with the path to your Word document or PDF file
 
     if st.button("Parse"):
-        if input_file.endswith('.docx'):
-            text = convert_docx_to_markdown(input_file)
-        elif input_file.endswith('.pdf'):
-            text = convert_pdf_to_markdown(input_file)
+        
 
-        st.write(text)
+        if input_file:
+            temp_dir = tempfile.mkdtemp()
+            path = os.path.join(temp_dir, input_file.name)
+            with open(path, "wb") as f:
+                    f.write(input_file.getvalue())
+
+            st.write(path)
+
+            if path.endswith('.docx'):
+                text = convert_docx_to_markdown(path)
+            elif path.endswith('.pdf'):
+                text = convert_pdf_to_markdown(path)
+
+            st.write(text)
