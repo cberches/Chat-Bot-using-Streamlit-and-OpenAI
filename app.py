@@ -579,4 +579,4 @@ with tab6:
             elif path.endswith('.pdf'):
                 text = convert_pdf_to_markdown(path)
 
-            st.write(text)
+            st.text(text)
