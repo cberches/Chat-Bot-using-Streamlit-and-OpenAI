@@ -3,3 +3,6 @@ openai==0.28
 llama-index
 nltk
 docx2txt
+markdown
+PyPDF2
+python-docx
