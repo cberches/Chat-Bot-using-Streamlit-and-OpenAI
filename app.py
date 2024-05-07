@@ -1,15 +1,18 @@
 import openai
 import streamlit as st
-from llama_index import VectorStoreIndex, ServiceContext, Document
-from llama_index.llms import OpenAI
-from llama_index import SimpleDirectoryReader
+#from llama_index import VectorStoreIndex, ServiceContext, Document
+#from llama_index.llms import OpenAI
+#from llama_index import SimpleDirectoryReader
+import docx
+import PyPDF2
+import markdown
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbotv2 (with indexing)", "Chatbotv1","JD Generator", "Job Matching", "AI Screening"])
+tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(["Chatbotv2 (with indexing)", "Chatbotv1","JD Generator", "Job Matching", "AI Screening", "CV Parsing"])
 
 openai.api_key = st.secrets['OPENAI_API_KEY']
 
 with tab2:
-    st.title("NXT Chatbot")
+    '''st.title("NXT Chatbot")
 
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -244,7 +247,7 @@ with tab2:
                 full_response += response.choices[0].delta.get("content", "")
                 message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
-        st.session_state.messages.append({"role": "assistant", "content": full_response})
+        st.session_state.messages.append({"role": "assistant", "content": full_response})'''
 
 with tab3:
     prompt = st.text_input("Describe the position/job role")
@@ -534,3 +537,27 @@ with tab1:
                 st.write(response.response)
                 message = {"role": "assistant", "content": response.response }
                 st.session_state.messages.append(message) # Add response to message history
+
+with tab6:
+    st.title("CV Parsing")
+    st.subheader("with PDF and Docx")
+
+    def convert_docx_to_markdown(input_file):
+        doc = docx.Document(input_file)
+        paragraphs = [p.text for p in doc.paragraphs]
+        markdown_text = '\n'.join(paragraphs)
+
+    def convert_pdf_to_markdown(input_file):
+        with open(input_file, 'rb') as f:
+            pdf_reader = PyPDF2.PdfReader(f)
+            text = ''
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+            markdown_text = markdown.markdown(text)
+
+    input_file = st.file_uploader(label='Resume') # Replace with the path to your Word document or PDF file
+
+    if input_file.endswith('.docx'):
+        convert_docx_to_markdown(input_file)
+    elif input_file.endswith('.pdf'):
+        convert_pdf_to_markdown(input_file)
