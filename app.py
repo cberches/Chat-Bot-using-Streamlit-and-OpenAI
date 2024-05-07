@@ -645,4 +645,4 @@ with tab5:
                 stream=True,
             ):
                 full_response += response.choices[0].delta.get("content", "")
-                json_format.json(full_response)
+                json_format.markdown(full_response)
