@@ -548,6 +548,7 @@ with tab6:
         doc = docx.Document(input_file)
         paragraphs = [p.text for p in doc.paragraphs]
         markdown_text = '\n'.join(paragraphs)
+        return markdown_text
 
     def convert_pdf_to_markdown(input_file):
         with open(input_file, 'rb') as f:
@@ -556,10 +557,14 @@ with tab6:
         for page in pdf_reader.pages:
             text += page.extract_text()
             markdown_text = markdown.markdown(text)
+        return markdown_text
 
     input_file = st.file_uploader(label='Resume') # Replace with the path to your Word document or PDF file
 
-    if input_file.endswith('.docx'):
-        convert_docx_to_markdown(input_file)
-    elif input_file.endswith('.pdf'):
-        convert_pdf_to_markdown(input_file)
+    if st.button("Parse"):
+        if input_file.endswith('.docx'):
+            text = convert_docx_to_markdown(input_file)
+        elif input_file.endswith('.pdf'):
+            text = convert_pdf_to_markdown(input_file)
+
+        st.write(text)
