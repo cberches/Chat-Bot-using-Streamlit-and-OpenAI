@@ -460,7 +460,8 @@ with tab4:
         The target audience is individuals who are the clients which are the HR recruiter or hiring managers looking for talents to improve their team.
 
         # RESPONSE FORMAT #
-        Provide first the question, then each question will show the applicant answer, your scoring (20 out of 20), and your analysis or insight.
+        Provide first the question, then each question will show the applicant answer, your scoring (20 out of 20), and your analysis or insight. 
+        Be strict in scoring, making sure that it reflects real-world scenario.
 
         Example:
         Assessment Analysis:
