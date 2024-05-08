@@ -15,6 +15,8 @@ import easyocr
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Chatbot","JD Generator", "Job Matching", "AI Screening", "CV Parsing"])
 
 openai.api_key = st.secrets['OPENAI_API_KEY']
+if "openai_model" not in st.session_state:
+    st.session_state["openai_model"] = "gpt-3.5-turbo"
 
 with tab1:
     st.title("NXT Chatbot")
@@ -60,8 +62,6 @@ with tab1:
         st.header("Chatbot v1")
         st.subheader("Using system prompt as knowledge base")
         try:
-            if "openai_model" not in st.session_state:
-                st.session_state["openai_model"] = "gpt-3.5-turbo"
 
             if "messages" not in st.session_state:
                 st.session_state.messages = []
