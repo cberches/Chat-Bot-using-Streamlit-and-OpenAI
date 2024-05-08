@@ -501,9 +501,9 @@ with tab4:
         
 
         Final output should contain only:
-        Total Score: {must be in percentage}
-        Category type: {just the category type}
-        Overall Insight: {aside from insight, this should also determine if the answers per each question were relevant to their corresponding question.}
+        - Total Score: {must be in percentage}
+        - Category type: {just the category type}
+        - Overall Insight: {aside from insight, this should also determine if the answers per each question were relevant to their corresponding question.}
 
     """
 
