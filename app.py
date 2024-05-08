@@ -23,10 +23,9 @@ with tab1:
         st.header("Chatbot v2")
         st.subheader("Using Llama Indexing for document file-based knowledge base")
 
-        if "messages" not in st.session_state.keys(): # Initialize the chat message history
-            st.session_state.messages = [
-                {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
-            ]
+        st.session_state.messages = [
+            {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
+        ]
         st.text(st.session_state.messages)
 
         @st.cache_resource(show_spinner=False)
