@@ -447,14 +447,11 @@ with tab3:
         ai_score_placeholder.markdown(full_response)
 
 with tab4:
-    system_prompt = """# CONTEXT # 
-        I am a machine learning engineer at a startup company in the staffing solutions industry. In this field, I create machine learning models which will help the company to achieve their goals. Now, I am focused on talent recruitment by helping them to develop AI models specifically for the Talent Recruitment platform as well as the application tracking system.
-
-        # OBJECTIVE #
-        Your task is to help me in scoring an applicant assessment answer. This involves processing the question and sample or suggested answer by HR or client, Applicant answer, creating a scoring for each question (20 out of 20 scoring), and your analysis and insight.
+    system_prompt = """# OBJECTIVE #
+        Your task is to help me in scoring an applicant assessment answer. This involves processing the question and Applicant answer, creating a scoring for each question and answer relevancy(20 out of 20 scoring), and your analysis and insight.
 
         # STYLE #
-        Write in a format which will be displayed in the pre-screening process. Ensure that each question does not show the sample or suggested answer by HR or client, but include the applicant answer, the score, and your insight or analysis.
+        Write in a format which will be displayed in the pre-screening process., It should include the applicant answer, the score, and your insight or analysis.
 
         # Tone #
         Maintain a formal tone in the insights. Make sure to retain the tone as an HR Expert.
@@ -501,23 +498,18 @@ with tab4:
 
     interview_questions_and_answers = """
     1. Can you share a specific example of a challenging situation you encountered at work and how you handled it?
-    - Suggested answer: In my previous role, we faced a tight deadline for a crucial project. I organized a team meeting to discuss priorities, delegated tasks based on team members' strengths, and implemented a more efficient workflow, which resulted in meeting the deadline successfully.
     - Applicant Answer: In a previous role, I encountered a situation where our project faced a tight deadline. I called for a team meeting to discuss the challenges, assigned tasks based on team members' strengths, and implemented a more efficient workflow. As a result, we successfully met the deadline and delivered a high-quality project.
 
     2. How do you prioritize and manage your workload when faced with multiple tasks or projects?
-    - Suggested answer: I prioritize tasks by assessing deadlines, urgency, and impact on overall goals. I use project management tools to create a timeline and ensure that each task receives the attention it deserves. Regular check-ins help me adjust priorities if needed.
     - Applicant Answer: When dealing with multiple tasks or projects, I prioritize by assessing deadlines, urgency, and impact on overall goals. I utilize project management tools to create a detailed timeline, ensuring each task is given the necessary attention. Regular check-ins and flexibility in adjusting priorities help me maintain an organized workflow.
 
     3. Describe a situation where you had to adapt to a significant change in the workplace. How did you handle it?
-    - Suggested answer: When our company underwent a restructuring, I proactively sought information, attended relevant workshops, and communicated openly with my team. I embraced the change, fostering a positive environment and helping team members adapt to new roles and responsibilities.
     - Applicant Answer: During a company restructuring, I proactively sought information, attended relevant workshops, and communicated openly with my team. I embraced the change, fostering a positive environment and helping team members adapt to new roles. My proactive approach contributed to a smooth transition, and the team continued to excel in our new structure.
 
     4. How do you approach collaboration and communication within a team?
-    - Suggested answer: I believe in open communication and active collaboration. Regular team meetings, transparent communication channels, and encouraging diverse perspectives contribute to a positive team dynamic. I also make an effort to listen actively and ensure everyone's input is valued.
     - Applicant Answer: I approach collaboration and communication within a team through open dialogue and active engagement. I organize regular team meetings to discuss ongoing projects, ensure everyone is on the same page, and encourage the exchange of ideas. I believe in fostering a positive team dynamic where each member feels valued and heard.
 
     5. Can you provide an example of a successful project you initiated or contributed to? What was your role, and what was the outcome?
-    - Suggested answer: In my previous position, I proposed and led a cross-functional initiative to streamline our customer support processes. By implementing new communication tools and training programs, we improved response times by 30% and received positive feedback from both customers and team members.
     - Applicant Answer: In a previous position, I initiated and led a cross-functional initiative to streamline customer support processes. My role involved proposing new communication tools and implementing training programs. The outcome was a 30% improvement in response times, resulting in positive feedback from both customers and team members.
     """
 
