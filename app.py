@@ -515,7 +515,7 @@ with tab4:
     """
 
     gen_screening_text_area = st.empty()
-    gen_screening_text_area.text_area("Input question and applicant answer")
+    gen_screening_text_area_score = gen_screening_text_area.text_area("Input question and applicant answer")
 
     screening_rb = st.radio("Use Screening Sample Info", ['Yes', 'No'])
 
@@ -526,7 +526,7 @@ with tab4:
         if screening_rb == 'Yes':
             prompt = gen_screening_text_area.text_area("Input question and applicant answer", value=interview_questions_and_answers)
         else:
-            prompt = gen_screening_text_area
+            prompt = gen_screening_text_area_score
         ai_screening_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
