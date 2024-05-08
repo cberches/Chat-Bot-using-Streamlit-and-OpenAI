@@ -27,7 +27,7 @@ with tab1:
             st.session_state.messages = [
                 {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
             ]
-        st.write(st.session_state.messages.index(0))
+        st.write(st.session_state.messages.index)
 
         @st.cache_resource(show_spinner=False)
         def load_data():
