@@ -600,7 +600,8 @@ with tab5:
                 text = display_text(detected_text)
 
             resume_prompt = '''
-                    Strictly follow this format. Any experiences such as project and leadership experiences included should be included in workHistory.
+                    Strictly follow this format. Any experiences such as project and leadership experiences included should be included in workHistory. 
+                    the field or features should strictly follow this format. Do not create fields that are not included in this example.
 
                     content: {
                         name: "{{name}}",
