@@ -646,7 +646,7 @@ with tab5:
                             dateIssued: "{{certificateDateIssued}}",
                         },
                         ],
-                    },
+                    }
                     };
                     '''
 
