@@ -582,7 +582,7 @@ with tab5:
             temp_dir = tempfile.mkdtemp()
             path = os.path.join(temp_dir, input_file.name)
             with open(path, "wb") as f:
-                    f.write(input_file.getvalue())
+                f.write(input_file.getvalue())
 
             st.write(path)
             text = None
@@ -600,7 +600,7 @@ with tab5:
                 text = display_text(detected_text)
 
             resume_prompt = '''
-                    Make sure to follow this format. Any experiences such as project and leadership experiences included should be included in workHistory.
+                    Strictly follow this format. Any experiences such as project and leadership experiences included should be included in workHistory.
 
                     content: {
                         name: "{{name}}",
