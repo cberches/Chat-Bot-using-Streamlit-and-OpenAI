@@ -27,7 +27,6 @@ with tab1:
             st.session_state.messages = [
                 {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
             ]
-        st.write(st.session_state.messages.index)
 
         @st.cache_resource(show_spinner=False)
         def load_data():
@@ -50,7 +49,7 @@ with tab1:
             with st.chat_message(message["role"]):
                 st.write(message["content"])
         
-        if st.session_state.messages[0]["role"] != "assistant":
+        if st.session_state.messages.index[0] != "assistant":
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
                     response = chat_engine.chat(prompt)
