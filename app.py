@@ -23,9 +23,10 @@ with tab1:
         st.header("Chatbot v2")
         st.subheader("Using Llama Indexing for document file-based knowledge base")
 
-        st.session_state.messages = [
-            {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
-        ]
+        if "messages" not in st.session_state.keys():   
+            st.session_state.messages = [
+                {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
+            ]
 
         @st.cache_resource(show_spinner=False)
         def load_data():
