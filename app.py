@@ -49,7 +49,7 @@ with tab1:
             with st.chat_message(message["role"]):
                 st.write(message["content"])
         
-        if st.session_state.messages.index[0] != "assistant":
+        if st.session_state.messages["role"][0] != "assistant":
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
                     response = chat_engine.chat(prompt)
