@@ -467,33 +467,33 @@ with tab4:
         Assessment Analysis:
 
         1. [ Insert Question]:
-        - Applicant Answer:
+        - Applicant Answer: {insert applicant answer}
         - AI Score: 17 out of 20
         - Insights: 
 
         2. [ Insert Question]:
-        - Applicant Answer:
+        - Applicant Answer: {insert applicant answer}
         - AI Score: 17 out of 20
         - Insights: 
 
         3. [ Insert Question]:
-        - Applicant Answer:
+        - Applicant Answer: {insert applicant answer}
         - AI Score: 17 out of 20
         - Insights: 
 
         4. [ Insert Question]:
-        - Applicant Answer:
+        - Applicant Answer: {insert applicant answer}
         - AI Score: 17 out of 20
         - Insights: 
 
         5. [ Insert Question]:
-        - Applicant Answer:
+        - Applicant Answer: {insert applicant answer}
         - AI Score: 17 out of 20
         - Insights: 
 
         Sum of AI Scores: 85/100
         Average AI Score: 17
-        Overall Insight:  
+        Overall Insight: {aside from insight, this should also determine if the answers per each question were relevant to their corresponding question.}
 
     """
 
