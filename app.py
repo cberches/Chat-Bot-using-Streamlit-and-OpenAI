@@ -600,7 +600,7 @@ with tab5:
                 text = display_text(detected_text)
 
             resume_prompt = '''
-                    The following is a resume format for a candidate named {{name}}, born on {{birthDate}}.
+                    Make sure to follow this format. Any experiences included should be included in workHistory.
 
                     content: {
                         name: "{{name}}",
