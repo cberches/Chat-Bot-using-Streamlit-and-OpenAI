@@ -54,7 +54,7 @@ with tab1:
                     response = chat_engine.chat(prompt)
                     st.write(response.response)
                     message = {"role": "assistant", "content": response.response }
-                    st.session_state.messages.append(message) # Add response to message history
+                st.session_state.messages.append(message) # Add response to message history
     else: 
         st.header("Chatbot v1")
         st.subheader("Using system prompt as knowledge base")
