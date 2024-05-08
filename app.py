@@ -491,8 +491,15 @@ with tab4:
         - AI Score: 17 out of 20
         - Insights: 
 
-        Sum of AI Scores: 85/100
-        Average AI Score: 17
+        Get total score divided by total maximum score and convert to Candidate type category:
+        1. Strong candidate  - 100
+        2. Promising talent   - 90
+        3. Average candidacy  - 80
+        4. Limited potential  - 75
+        5. Below expectations  - below 75
+
+        Final output should contain:
+        Category type: {just the category type}
         Overall Insight: {aside from insight, this should also determine if the answers per each question were relevant to their corresponding question.}
 
     """
