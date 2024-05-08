@@ -461,7 +461,7 @@ with tab4:
 
         # RESPONSE FORMAT #
         Provide first the question, then each question will show the applicant answer, your scoring (20 out of 20), and your analysis or insight. 
-        Be strict in scoring, making sure that it reflects real-world scenario.
+        Be strict in scoring, making sure that it reflects real-world scenario. Insights should contain the strength and opportunities of the applicant base on the answer.
 
         Example:
         Assessment Analysis:
