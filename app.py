@@ -600,7 +600,7 @@ with tab5:
                 text = display_text(detected_text)
 
             resume_prompt = '''
-                    Make sure to follow this format. Any experiences included should be included in workHistory.
+                    Make sure to follow this format. Any experiences such as project and leadership experiences included should be included in workHistory.
 
                     content: {
                         name: "{{name}}",
