@@ -498,7 +498,7 @@ with tab4:
         4. Limited potential  - 75
         5. Below expectations  - below 75
 
-        Final output should contain:
+        Final output should contain only:
         Category type: {just the category type}
         Overall Insight: {aside from insight, this should also determine if the answers per each question were relevant to their corresponding question.}
 
