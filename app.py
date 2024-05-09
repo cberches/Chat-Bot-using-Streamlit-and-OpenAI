@@ -54,7 +54,7 @@ with tab1:
         if st.session_state.messages[-1]["role"] != "assistant":
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
-                    response = chat_engine.chat(prompt+"Do not answer question not related to topic.")
+                    response = chat_engine.chat(prompt+ str("Do not answer question not related to topic."))
                     st.write(response.response)
                     message = {"role": "assistant", "content": response.response }
                 st.session_state.messages.append(message) # Add response to message history
@@ -286,7 +286,7 @@ with tab1:
                         model=st.session_state["openai_model"],
                         messages=[
                             {"role": "system", "content": system_prompt},
-                            {"role": "user", "content": prompt + str(". Don’t give information not mentioned in the CONTEXT INFORMATION.")}
+                            {"role": "user", "content": prompt + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
                         ],
                         stream=True,
                     ):
