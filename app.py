@@ -286,7 +286,7 @@ with tab1:
                         model=st.session_state["openai_model"],
                         messages=[
                             {"role": "system", "content": system_prompt},
-                            {"role": "user", "content": "prompt" + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
+                            {"role": "user", "content": prompt + ". Don’t give information not mentioned in the CONTEXT INFORMATION."}
                         ],
                         stream=True,
                     ):
