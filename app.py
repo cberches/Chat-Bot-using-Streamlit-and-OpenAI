@@ -475,33 +475,33 @@ with tab4:
 
         1. [ Insert Question]:
         - Applicant Answer: {insert applicant answer}
-        - AI Score: 17 out of 20
+        - AI Score: {up to 100%}
         - Insights: 
 
         2. [ Insert Question]:
         - Applicant Answer: {insert applicant answer}
-        - AI Score: 17 out of 20
+        - AI Score: {up to 100%}
         - Insights: 
 
         3. [ Insert Question]:
         - Applicant Answer: {insert applicant answer}
-        - AI Score: 17 out of 20
+        - AI Score: {up to 100%}
         - Insights: 
 
         4. [ Insert Question]:
         - Applicant Answer: {insert applicant answer}
-        - AI Score: 17 out of 20
+        - AI Score: {up to 100%}
         - Insights: 
 
         5. [ Insert Question]:
         - Applicant Answer: {insert applicant answer}
-        - AI Score: 17 out of 20
+        - AI Score: {up to 100%}
         - Insights: 
 
         
 
         Final output should contain only:
-        - Total Score: {must be in percentage}
+        - Total Average Score: {must be in percentage}
         - Category type: {just the category type}
         - Overall Insight: {aside from insight, this should also determine if the answers per each question were relevant to their corresponding question.}
 
