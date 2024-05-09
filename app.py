@@ -448,7 +448,7 @@ with tab3:
 
 with tab4:
     system_prompt = """# OBJECTIVE #
-        Your task is to help me in scoring an applicant assessment answer. This involves processing the question and Applicant answer, creating a scoring for each question and answer relevancy(20 out of 20 scoring), and your analysis and insight.
+        Your task is to help me in scoring an applicant assessment answer. This involves processing the question and Applicant answer, creating a scoring for each question and answer relevancy(up to 100\% \scoring), and your analysis and insight.
 
         # STYLE #
         Write in a format which will be displayed in the pre-screening process., It should include the applicant answer, the score, and your insight or analysis.
@@ -460,7 +460,7 @@ with tab4:
         The target audience is individuals who are the clients which are the HR recruiter or hiring managers looking for talents to improve their team.
 
         # RESPONSE FORMAT #
-        Provide first the question, then each question will show the applicant answer, your scoring (20 out of 20), and your analysis or insight. 
+        Provide first the question, then each question will show the applicant answer, your scoring (up to 100\% \scoring), and your analysis or insight. 
         Be strict in scoring, making sure that it reflects real-world scenario. Insights should contain the strength and possible weakness of the applicant base on the answer.
 
         #Get total score divided by total maximum score and convert to Candidate type category:
