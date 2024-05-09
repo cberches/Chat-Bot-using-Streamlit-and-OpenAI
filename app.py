@@ -54,7 +54,7 @@ with tab1:
         if st.session_state.messages[-1]["role"] != "assistant":
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
-                    response = chat_engine.chat(prompt+ str("Do not answer question not related to topic."))
+                    response = chat_engine.chat(prompt)
                     st.write(response.response)
                     message = {"role": "assistant", "content": response.response }
                 st.session_state.messages.append(message) # Add response to message history
